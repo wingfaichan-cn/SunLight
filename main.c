@@ -5,7 +5,7 @@
 #define HEIGHT 600
 
 #define SUN_R 50
-#define RAY_N 300
+#define RAY_N 150
 
 // object
 #define X (WIDTH*3/4)
@@ -30,7 +30,10 @@ void DrawLight(double x, double y, double theta, Color color) {
 
         if (pow((x-X), 2) + pow((y-Y), 2) < pow(R, 2)) return;
 
+        if (color.a < 1) return;
+
         DrawPixel(x, y, color);
+        if (i & 1) color.a *= 0.9999;
     }
 }
 
